@@ -1,0 +1,48 @@
+<div class="flex justify-center mt-20">
+    <div class="w-full max-w-md">
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+            <div class="p-6">
+                <h5 class="text-2xl font-semibold mb-4 text-slate-950">Register</h5>
+                <form>
+                    <div class="mb-4">
+                        <label for="name" class="block text-slate-950 font-semibold mb-2">Name</label>
+                        <input type="text" id="name" name="name" [(ngModel)]="name"
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-emerald-500"/>
+                        <div *ngIf="validationErrors?.name != undefined" class="flex flex-col mt-2">
+                            <small class="text-red-500">{{validationErrors.name[0]}}</small>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-slate-950 font-semibold mb-2">Email address</label>
+                        <input type="email" id="email" name="email" required [(ngModel)]="email"
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-emerald-500"/>
+                        <div *ngIf="validationErrors?.email != undefined" class="flex flex-col mt-2">
+                            <small class="text-red-500">{{validationErrors.email[0]}}</small>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="password" class="block text-slate-950 font-semibold mb-2">Password</label>
+                        <input type="password" id="password" name="password" required [(ngModel)]="password"
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-emerald-500"/>
+                        <div *ngIf="validationErrors?.password != undefined" class="flex flex-col mt-2">
+                            <small class="text-red-500">{{validationErrors.password[0]}}</small>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="confirm-password" class="block text-slate-950 font-semibold mb-2">Confirm Password</label>
+                        <input type="password" id="confirm-password" name="confirm-password" required [(ngModel)]="confirmPassword"
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-emerald-500"/>
+                    </div>
+                    <div class="mt-6">
+                        <button [disabled]="isSubmitting || (password.length <= 0 || email.length <= 0 || confirmPassword.length <= 0)" (click)="registerAction()"
+                            type="button" class="w-full bg-emerald-500 text-white p-3 rounded-lg hover:bg-emerald-600 focus:outline-none focus:bg-emerald-600">
+                            Register Now
+                        </button>
+                        <p class="text-center text-slate-950 mt-4">Already have an account? <a routerLink="/login"
+                            class="text-emerald-500 hover:underline">Login here</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

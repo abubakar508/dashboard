@@ -1,0 +1,72 @@
+<div class="flex h-screen">
+    <!-- Sidebar -->
+    <div [class.translate-x-0]="sidebarOpen" [class.-translate-x-full]="!sidebarOpen"
+         class="fixed inset-y-0 left-0 z-50 w-64 bg-gray-800 text-white transform transition-transform duration-300">
+        <div class="p-4">
+            <h2 class="text-lg font-semibold">Menu</h2>
+            <ul>
+                <li class="mt-4">
+                    <a (click)="navigate('/home')" class="block py-2 px-4 rounded hover:bg-gray-700 cursor-pointer">Home</a>
+                </li>
+                <li class="mt-4">
+                    <a (click)="navigate('/profile')" class="block py-2 px-4 rounded hover:bg-gray-700 cursor-pointer">Profile</a>
+                </li>
+                <li class="mt-4">
+                    <a (click)="navigate('/settings')" class="block py-2 px-4 rounded hover:bg-gray-700 cursor-pointer">Settings</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col">
+        <nav class="bg-gray-100 p-4 flex justify-between items-center">
+            <button (click)="toggleSidebar()" class="text-gray-500 z-50 p-4 bg-red-500 focus:outline-none md:hidden">
+                <span class="material-icons">menu</span>
+            </button>
+            <h1 class="text-2xl font-bold">Dashboard</h1>
+            <div>
+                <h1>
+                    Smart Invest Admin
+                </h1>
+            </div>
+
+            <div class="flex items-center justify-center mt-5">
+                <div class="relative inline-block text-left">
+                    <div class="">
+                        <button (click)="toggleDropdown()" type="button" class="inline-flex items-center justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-slate-950 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500">
+                            Welcome, {{ user.name }}!
+                            <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                    <!-- Dropdown Menu -->
+                    <div *ngIf="isDropdownOpen" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                        <div class="py-1" role="none">
+                            <!-- Logout Button -->
+                            <button type="button" (click)="logoutAction()" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none" role="menuitem" tabindex="-1" id="menu-item-0">
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </nav>
+
+        <!-- another banger -->
+        <div class="p-6 flex-1">
+
+            <div>
+                <span class=" flex items-center gap-2 font-black text-4xl">
+                    Welcome Admin,
+                    <span class="text-emerald-500">
+                        {{ user.name}}                  
+                    </span> 
+                </span>
+            </div>
+            <!-- Your main content here -->
+        </div>
+    </div>
+</div>
