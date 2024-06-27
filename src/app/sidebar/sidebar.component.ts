@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UserAuthService } from '../user-auth.service';
 import { Router } from '@angular/router';
 
@@ -8,12 +8,9 @@ import { Router } from '@angular/router';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
-  sidebarOpen = false; 
+  @Input() isOpen = false;
 
-  constructor(public userAuthService: UserAuthService, private router: Router) {}
-
-  navigate(path: string) {
-    this.router.navigate([path]);
-    this.sidebarOpen = false; 
+  closeSidebar() {
+    this.isOpen = false;
   }
 }

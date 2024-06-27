@@ -10,7 +10,8 @@ import { User } from '../user/user';
 })
 export class NavbarComponent {
   user!: User;
-  sidebarOpen = false; 
+  isSidebarOpen = false;
+
   isDropdownOpen: boolean = false;
 
   constructor(public userAuthService: UserAuthService, private router: Router) {}
@@ -19,10 +20,10 @@ export class NavbarComponent {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
 
-  toggleSidebar() {
-    this.sidebarOpen = !this.sidebarOpen;
-  }
   
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
   logoutAction() {
     this.userAuthService.logout().then(() => {
       localStorage.setItem('token', "");

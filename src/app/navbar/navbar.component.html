@@ -1,4 +1,4 @@
-<nav class="bg-slate-950 flex justify-between items-center w-full p-3 fixed inset-[1]">
+<nav class="bg-slate-950 flex justify-between items-center w-full p-3 fixed inset-[1] z-50">
     <!-- <button (click)="toggleSidebar()" class="text-gray-500 z-50 p-4 focus:outline-none md:hidden">
         <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
@@ -9,6 +9,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
           </svg>
           </h1>
+        <app-sidebar [isOpen]="isSidebarOpen"></app-sidebar>
     <div>
         <span class=" font-bold text-emerald-500">
             Smart Invest Admin
@@ -34,7 +35,7 @@
                     </button>
                 </div>
             </div>
-            <button type="button" (click)="logoutAction()" class="block rounded-md w-full text-left px-4 py-2 text-sm text-gray-200 hover:bg-gray-700 focus:outline-none" role="menuitem" tabindex="-1" id="menu-item-0">
+            <button type="button" (click)="logoutAction()" class="block z-50 rounded-md w-full text-left px-4 py-2 text-sm text-gray-200 hover:bg-gray-700 focus:outline-none" role="menuitem" tabindex="-1" id="menu-item-0">
                 Logout
             </button>
         </div>

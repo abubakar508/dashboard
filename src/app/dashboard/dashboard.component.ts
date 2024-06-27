@@ -22,54 +22,53 @@ export class DashboardComponent implements OnInit {
     if (localStorage.getItem('token') === "" || localStorage.getItem('token') === null) {
       this.router.navigateByUrl('/');
     } else {
-      this.fetchUsers(); // Load users initially
+      this.fetchUsers(); 
     }
   }
 
   fetchUsers(): void {
     this.userAuthService.getUser().then(({ data }) => {
-      this.users = data; // Assuming getUsers() returns a list of users
+      this.users = data; 
     });
   }
 
   addUser(): void {
     this.userAuthService.addUser(this.newUser).then(() => {
-      this.fetchUsers(); // Refresh the list after adding user
-      this.newUser = { name: '', email: '', password: '' }; // Clear new user data
-      this.isAddingUser = false; // Hide add user form after submission
+      this.fetchUsers(); 
+      this.newUser = { name: '', email: '', password: '' }; 
+      this.isAddingUser = false; 
     });
   }
 
   updateUser(user: User): void {
-    this.selectedUser = { ...user }; // Set selectedUser for update
-    this.isUpdatingUser = true; // Show update user form
+    this.selectedUser = { ...user }; 
+    this.isUpdatingUser = true;
   }
 
   saveUpdatedUser(): void {
     if (this.selectedUser) {
       this.userAuthService.updateUser(this.selectedUser).then(() => {
-        this.fetchUsers(); // Refresh the list after updating user
-        this.selectedUser = null; // Clear selectedUser after update
-        this.isUpdatingUser = false; // Hide update user form after submission
+        this.fetchUsers(); 
+        this.selectedUser = null;
+        this.isUpdatingUser = false;
       });
     }
   }
 
   cancelUpdate(): void {
-    this.selectedUser = null; // Clear selectedUser on cancel
-    this.isUpdatingUser = false; // Hide update user form on cancel
+    this.selectedUser = null;
+    this.isUpdatingUser = false;
   }
 
   deleteUser(user: User): void {
     this.userAuthService.deleteUser(user.id).then(() => {
-      this.fetchUsers(); // Refresh the list after deleting user
+      this.fetchUsers();
     });
   }
 
-  // Implement search functionality and user selection for update
   searchUser(event: Event) {
-    const target = event.target as HTMLInputElement; // Cast event.target to HTMLInputElement
-    const value = target.value; // Now TypeScript recognizes value property
-    // Your search logic using 'value'
+    const target = event.target as HTMLInputElement;
+    const value = target.value;
+    // todo: include search logic using the value type
   }
 }

@@ -1,17 +1,10 @@
-<div [class.translate-x-0]="sidebarOpen" [class.-translate-x-full]="!sidebarOpen"
-class="fixed inset-y-0 left-0 z-50 w-64 bg-gray-800 text-white transform transition-transform duration-300">
-<div class="p-4">
-   <h2 class="text-lg font-semibold">Menu</h2>
-   <ul>
-       <li class="mt-4">
-           <a (click)="navigate('/home')" class="block py-2 px-4 rounded hover:bg-gray-700 cursor-pointer">Home</a>
-       </li>
-       <li class="mt-4">
-           <a (click)="navigate('/profile')" class="block py-2 px-4 rounded hover:bg-gray-700 cursor-pointer">Profile</a>
-       </li>
-       <li class="mt-4">
-           <a (click)="navigate('/settings')" class="block py-2 px-4 rounded hover:bg-gray-700 cursor-pointer">Settings</a>
-       </li>
-   </ul>
-</div>
-</div>
+<div class="fixed inset-0 z-50 bg-red-500 h-screen w-[300px] flex" *ngIf="isOpen">
+    <div class="fixed inset-0 bg-gray-600 bg-opacity-75" (click)="closeSidebar()">Close</div>
+    <div class="relative bg-white w-64 h-full shadow-xl">
+      <div class="p-4">
+        <h2 class="text-2xl font-bold">Sidebar</h2>
+        <p>Sidebar content goes here.</p>
+      </div>
+    </div>
+  </div>
+  
