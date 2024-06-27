@@ -1,0 +1,17 @@
+<div [class.translate-x-0]="sidebarOpen" [class.-translate-x-full]="!sidebarOpen"
+class="fixed inset-y-0 left-0 z-50 w-64 bg-gray-800 text-white transform transition-transform duration-300">
+<div class="p-4">
+   <h2 class="text-lg font-semibold">Menu</h2>
+   <ul>
+       <li class="mt-4">
+           <a (click)="navigate('/home')" class="block py-2 px-4 rounded hover:bg-gray-700 cursor-pointer">Home</a>
+       </li>
+       <li class="mt-4">
+           <a (click)="navigate('/profile')" class="block py-2 px-4 rounded hover:bg-gray-700 cursor-pointer">Profile</a>
+       </li>
+       <li class="mt-4">
+           <a (click)="navigate('/settings')" class="block py-2 px-4 rounded hover:bg-gray-700 cursor-pointer">Settings</a>
+       </li>
+   </ul>
+</div>
+</div>

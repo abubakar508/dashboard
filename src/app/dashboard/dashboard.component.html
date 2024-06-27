@@ -1,72 +1,237 @@
-<div class="flex h-screen">
-    <!-- Sidebar -->
-    <div [class.translate-x-0]="sidebarOpen" [class.-translate-x-full]="!sidebarOpen"
-         class="fixed inset-y-0 left-0 z-50 w-64 bg-gray-800 text-white transform transition-transform duration-300">
-        <div class="p-4">
-            <h2 class="text-lg font-semibold">Menu</h2>
-            <ul>
-                <li class="mt-4">
-                    <a (click)="navigate('/home')" class="block py-2 px-4 rounded hover:bg-gray-700 cursor-pointer">Home</a>
-                </li>
-                <li class="mt-4">
-                    <a (click)="navigate('/profile')" class="block py-2 px-4 rounded hover:bg-gray-700 cursor-pointer">Profile</a>
-                </li>
-                <li class="mt-4">
-                    <a (click)="navigate('/settings')" class="block py-2 px-4 rounded hover:bg-gray-700 cursor-pointer">Settings</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+<div class=" h-screen border-2 w-full pt-24">
 
     <!-- Main Content -->
     <div class="flex-1 flex flex-col">
-        <nav class="bg-gray-100 p-4 flex justify-between items-center">
-            <button (click)="toggleSidebar()" class="text-gray-500 z-50 p-4 bg-red-500 focus:outline-none md:hidden">
-                <span class="material-icons">menu</span>
-            </button>
-            <h1 class="text-2xl font-bold">Dashboard</h1>
-            <div>
-                <h1>
-                    Smart Invest Admin
-                </h1>
-            </div>
 
-            <div class="flex items-center justify-center mt-5">
-                <div class="relative inline-block text-left">
-                    <div class="">
-                        <button (click)="toggleDropdown()" type="button" class="inline-flex items-center justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-slate-950 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500">
-                            Welcome, {{ user.name }}!
-                            <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                            </svg>
-                        </button>
-                    </div>
-                    <!-- Dropdown Menu -->
-                    <div *ngIf="isDropdownOpen" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-                        <div class="py-1" role="none">
-                            <!-- Logout Button -->
-                            <button type="button" (click)="logoutAction()" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none" role="menuitem" tabindex="-1" id="menu-item-0">
-                                Logout
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </nav>
-
-        <!-- another banger -->
         <div class="p-6 flex-1">
-
-            <div>
+            <!-- welcoming -->
+            <div class=" px-[260px] w-full py-3 ">
                 <span class=" flex items-center gap-2 font-black text-4xl">
                     Welcome Admin,
                     <span class="text-emerald-500">
-                        {{ user.name}}                  
+                        {{ user.name }}                  
                     </span> 
                 </span>
             </div>
+            <!-- end of welconing -->
+
+            <!-- starting divs -->
+            <div class="container">
+                <div class="row">
+                  <!-- Total Revenue -->
+                  <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex align-items-stretch">
+                    <div class="card w-100 text-center">
+                      <div class="card-body">
+                        <svg class="mb-3" width="64" height="64" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                          <path d="M2 2v12h12V2H2zm1 1h10v10H3V3z"></path>
+                        </svg>
+                        <h5 class="card-title">Total Revenue</h5>
+                        <p class="card-text">KES 130000</p>
+                      </div>
+                    </div>
+                  </div>
+              
+                  <!-- Users Registered -->
+                  <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex align-items-stretch">
+                    <div class="card w-100 text-center">
+                      <div class="card-body">
+                        <svg class="mb-3" width="64" height="64" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                          <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 1a7 7 0 0 0-6.292 3.8C2.333 13.034 4.774 13 8 13s5.667.034 6.292-.2A7 7 0 0 0 8 9z"></path>
+                        </svg>
+                        <h5 class="card-title">Users Registered</h5>
+                        <p class="card-text">500+</p>
+                      </div>
+                    </div>
+                  </div>
+              
+                  <!-- Total Investments -->
+                  <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex align-items-stretch">
+                    <div class="card w-100 text-center">
+                      <div class="card-body">
+                        <svg class="mb-3" width="64" height="64" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                          <path d="M6 0h4v2H6V0zM4 3h8v2H4V3zM2 6h12v2H2V6zM1 9h14v2H1V9zM0 12h16v2H0v-2z"></path>
+                        </svg>
+                        <h5 class="card-title">Total Investments</h5>
+                        <p class="card-text">KES 124560</p>
+                      </div>
+                    </div>
+                  </div>
+              
+                  <!-- Earnings -->
+                  <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex align-items-stretch">
+                    <div class="card w-100 text-center">
+                      <div class="card-body">
+                        <svg class="mb-3" width="64" height="64" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                          <path d="M6 0h4v2H6V0zM4 3h8v2H4V3zM2 6h12v2H2V6zM1 9h14v2H1V9zM0 12h16v2H0v-2z"></path>
+                        </svg>
+                        <h5 class="card-title">Earnings</h5>
+                        <p class="card-text">KES 500000</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="row">
+                  <!-- Capitation -->
+                  <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex align-items-stretch">
+                    <div class="card w-100 text-center">
+                      <div class="card-body">
+                        <svg class="mb-3" width="64" height="64" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                          <path d="M1 2h14v2H1V2zm0 4h10v2H1V6zm0 4h14v2H1v-2z"></path>
+                        </svg>
+                        <h5 class="card-title">Capitation</h5>
+                        <p class="card-text">KES 3000</p>
+                      </div>
+                    </div>
+                  </div>
+              
+                  <!-- Returns -->
+                  <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex align-items-stretch">
+                    <div class="card w-100 text-center">
+                      <div class="card-body">
+                        <svg class="mb-3" width="64" height="64" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                          <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.993 5.355l-4.52 6.004a.75.75 0 0 1-1.114.093L3.354 9.857a.75.75 0 1 1 1.062-1.058l1.529 1.386 4.067-5.407a.75.75 0 1 1 1.18.937z"></path>
+                        </svg>
+                        <h5 class="card-title">Returns</h5>
+                        <p class="card-text">KES 17000</p>
+                      </div>
+                    </div>
+                  </div>
+              
+                  <!-- New Subscribers -->
+                  <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex align-items-stretch">
+                    <div class="card w-100 text-center">
+                      <div class="card-body">
+                        <svg class="mb-3" width="64" height="64" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                          <path d="M8 3.993a4.002 4.002 0 0 1 3.995 3.905c.033.046.074.09.116.134l.34.378a1.5 1.5 0 0 0 2.122 0l.354-.354a1.5 1.5 0 0 0 0-2.122l-.354-.354a1.5 1.5 0 0 0-2.122 0l-.354.354a1.5 1.5 0 0 0 0 2.122l-.354.354a1.5 1.5 0 0 0 0 2.122l-.354.354a1.5 1.5 0 0 0 0 2.122l.354.354a1.5 1.5 0 0 0 2.122 0l.354-.354a1.5 1.5 0 0 0 0-2.122l-.354-.354a1.5 1.5 0 0 0-2.122 0l-.354.354a1.5 1.5 0 0 0 0 2.122l-.354.354a1.5 1.5 0 0 0 0 2.122l.354.354a1.5 1.5 0 0 0 2.122 0l.354-.354a1.5 1.5 0 0 0 0-2.122l-.354-.354a1.5 1.5 0 0 0-2.122 0l-.354.354a1.5 1.5 0 0 0 0 2.122l.354.354a1.5 1.5 0 0 0 2.122 0l.354-.354a1.5 1.5 0 0 0 0-2.122l-.354-.354a1.5 1.5 0 0 0-2.122 0l-.354.354a1.5 1.5 0 0 0 0 2.122l-.354.354a1.5 1.5 0 0 0 0 2.122l.354.354a1.5 1.5 0 0 0 2.122 0l.354-.354a1.5 1.5 0 0 0 0-2.122l-.354-.354a1.5 1.5 0 0 0-2.122 0l-.354.354a1.5 1.5 0 0 0 0 2.122l.354.354a1.5 1.5 0 0 0 2.122 0l.354-.354a1.5 1.5 0 0 0 0-2.122l-.354-.354a1.5 1.5 0 0 0-2.122 0l-.354.354a1.5 1.5 0 0 0 0 2.122l-.354.354a1.5 1.5 0 0 0 0 2.122l.354.354a1.5 1.5 0 0 0 2.122 0l.354-.354a1.5 1.5 0 0 0 0-2.122l-.354-.354a1.5 1.5 0 0 0-2.122 0l-.354.354a1.5 1.5 0 0 0 0 2.122l.354.354a1.5 1.5 0 0 0 2.122 0l.354-.354a1.5 1.5 0 0 0 0-2.122l-.354-.354a1.5 1.5 0 0 0-2.122 0l-.354.354a1.5 1.5 0 0 0 0 2.122l.354.354a1.5 1.5 0 0 0 2.122 0l.354-.354a1.5 1.5 0 0 0 0-2.122l-.354-.354a1.5 1.5 0 0 0-2.122 0l-.354.354a1.5 1.5 0 0 0 0 2.122l.354.354a1.5 1.5 0 0 0 2.122 0l.354-.354a1.5 1.5 0 0 0 0-2.122l-.354-.354a1.5 1.5 0 0 0-2.122 0l-.354.354a1.5 1.5 0 0 0 0 2.122l.354.354a1.5 1.5 0 0 0 0 2.122l-.354.354a1.5 1.5 0 0 0 0 2.122l.354.354a1.5 1.5 0 0 0 0 2.122l.354.354a1.5 1.5 0 0 0 2.122 0l.354-.354a1.5 1.5 0 0 0 0-2.122l-.354-.354a1.5 1.5 0 0 0-2.122 0l-.354.354a1.5 1.5 0 0 0 0 2.122l.354.354a1.5 1.5 0 0 0 2.122 0l.354-.354a1.5 1.5 0 0 0 0-2.122l-.354-.354a1.5 1.5 0 0 0-2.122 0l-.354.354a1.5 1.5 0 0 0 0 2.122l.354.354a1.5 1.5 0 0 0 2.122 0l.354-.354a1.5 1.5 0 0 0 0-2.122l-.354-.354a1.5 1.5 0 0 0-2.122 0l-.354.354a1.5 1.5 0 0 0 0 2.122l.354.354a1.5 1.5 0 0 0 2.122 0l.354-.354a1.5 1.5 0 0 0 0-2.122l-.354-.354a1.5 1.5 0 0 0-2.122 0l-.354.354a1.5 1.5 0 0 0 0 2.122l.354.354a1.5 1.5 0 0 0 2.122 0l.354-.354a1.5 1.5 0 0 0 0-2.122l-.354-.354a1.5 1.5 0 0 0-2.122 0l-.354.354a1.5 1.5 0 0 0 0 2.122l.354.354a1.5 1.5 0 0 0 2.122 0l.354-.354a1.5 1.5 0 0 0 0-2.122z"></path>
+                        </svg>
+                        <h5 class="card-title">New Subscribers</h5>
+                        <p class="card-text">200+</p>
+                      </div>
+                    </div>
+                  </div>
+              
+                  <!-- Pending Withdrawals -->
+                  <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex align-items-stretch">
+                    <div class="card w-100 text-center">
+                      <div class="card-body">
+                        <svg class="mb-3" width="64" height="64" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                          <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm0 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm-.354-9.646a.5.5 0 1 0-.708.708L7.293 7.5H4.5a.5.5 0 0 0 0 1h2.793l-1.147 1.146a.5.5 0 0 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2z"></path>
+                        </svg>
+                        <h5 class="card-title">Pending Withdrawals</h5>
+                        <p class="card-text">KES 45000</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              
+              
+            <!-- ending divs -->
+           
             <!-- Your main content here -->
         </div>
+
     </div>
+     <!-- User add start -->
+            
+            <!-- User add end -->
+            <div class="flex flex-col absolute right-0 w-[300px] z-10 h-screen top-0">
+                <div class="pt-24 flex gap-2 justify-center">
+                  <div>
+                    <button class="p-2 text-[11px] border-2 border-slate-950 font-bold text-slate-950 rounded-md"
+                            (click)="isAddingUser = true">
+                      Add User
+                    </button>
+                  </div>
+                  <div>
+                    <button class="p-2 text-[11px] border-2 border-slate-950 font-bold text-slate-950 rounded-md"
+                            (click)="isUpdatingUser = true">
+                      Update User
+                    </button>
+                  </div>
+                  <div>
+                    <button class="p-2 text-[11px] border-2 border-slate-950 font-bold text-slate-950 rounded-md">
+                      Delete User
+                    </button>
+                  </div>
+                </div>
+              
+                <!-- Add User Form -->
+                <div *ngIf="isAddingUser" class="py-4 px-2">
+                  <form (submit)="addUser()">
+                    <input type="text" class="w-full border rounded-md py-2 px-3" placeholder="Name"
+                           [(ngModel)]="newUser.name" required>
+                    <input type="email" class="w-full border rounded-md py-2 px-3 mt-2" placeholder="Email"
+                           [(ngModel)]="newUser.email" required>
+                    <input type="password" class="w-full border rounded-md py-2 px-3 mt-2" placeholder="Password"
+                           [(ngModel)]="newUser.password" required>
+                    <div class="flex mt-4">
+                      <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md mr-2">Add</button>
+                      <button type="button" class="bg-gray-300 text-gray-700 py-2 px-4 rounded-md" (click)="isAddingUser = false">Cancel</button>
+                    </div>
+                  </form>
+                </div>
+              
+                <!-- Update User Form -->
+                <div *ngIf="isUpdatingUser && selectedUser" class="py-4 px-2 z-50">
+                  <form (submit)="saveUpdatedUser()">
+                    <input type="text" class="w-full border rounded-md py-2 px-3" placeholder="Name"
+                           [(ngModel)]="selectedUser.name" required>
+                    <input type="email" class="w-full border rounded-md py-2 px-3 mt-2" placeholder="Email"
+                           [(ngModel)]="selectedUser.email" required>
+                    <input type="password" class="w-full border rounded-md py-2 px-3 mt-2" placeholder="Password"
+                           [(ngModel)]="selectedUser.password" required>
+                    <div class="flex mt-4">
+                      <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md mr-2">Update</button>
+                      <button type="button" class="bg-gray-300 text-gray-700 py-2 px-4 rounded-md" (click)="cancelUpdate()">Cancel</button>
+                    </div>
+                  </form>
+                </div>
+              
+                <!-- Table -->
+                <div class="overflow-x-auto">
+                  <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                      <tr>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Name
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Email
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Password
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Actions
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                      <tr *ngFor="let user of users; let i = index">
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="text-sm font-medium text-gray-900">{{ user.name }}</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="text-sm text-gray-900">{{ user.email }}</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="text-sm text-gray-900">{{ user.password }}</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <button class="text-sm text-red-500" (click)="deleteUser(user)">
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              
+              
 </div>
+
+

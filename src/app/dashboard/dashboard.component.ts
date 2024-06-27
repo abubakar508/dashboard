@@ -10,42 +10,66 @@ import { User } from '../user/user';
 })
 export class DashboardComponent implements OnInit {
   user!: User;
-  sidebarOpen = false; 
-  isDropdownOpen: boolean = false;
+  users: User[] = []; // Array to store users
+  newUser: User = { name: '', email: '', password: '' }; // Object to store new user data
+  selectedUser: User | null = null; // Variable to store the selected user for update
+  isAddingUser = false; // Flag to show/hide add user form
+  isUpdatingUser = false; // Flag to show/hide update user form
 
   constructor(public userAuthService: UserAuthService, private router: Router) {}
 
-  toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen;
-  }
-
   ngOnInit(): void {
-    // Check if token is available
     if (localStorage.getItem('token') === "" || localStorage.getItem('token') === null) {
       this.router.navigateByUrl('/');
     } else {
-      this.userAuthService.getUser().then(({ data }) => {
-        this.user = data;
+      this.fetchUsers(); // Load users initially
+    }
+  }
+
+  fetchUsers(): void {
+    this.userAuthService.getUser().then(({ data }) => {
+      this.users = data; // Assuming getUsers() returns a list of users
+    });
+  }
+
+  addUser(): void {
+    this.userAuthService.addUser(this.newUser).then(() => {
+      this.fetchUsers(); // Refresh the list after adding user
+      this.newUser = { name: '', email: '', password: '' }; // Clear new user data
+      this.isAddingUser = false; // Hide add user form after submission
+    });
+  }
+
+  updateUser(user: User): void {
+    this.selectedUser = { ...user }; // Set selectedUser for update
+    this.isUpdatingUser = true; // Show update user form
+  }
+
+  saveUpdatedUser(): void {
+    if (this.selectedUser) {
+      this.userAuthService.updateUser(this.selectedUser).then(() => {
+        this.fetchUsers(); // Refresh the list after updating user
+        this.selectedUser = null; // Clear selectedUser after update
+        this.isUpdatingUser = false; // Hide update user form after submission
       });
     }
   }
 
-  toggleSidebar() {
-    this.sidebarOpen = !this.sidebarOpen;
+  cancelUpdate(): void {
+    this.selectedUser = null; // Clear selectedUser on cancel
+    this.isUpdatingUser = false; // Hide update user form on cancel
   }
 
-  navigate(path: string) {
-    this.router.navigate([path]);
-    this.sidebarOpen = false; // Close the sidebar after navigation
-  }
-
-  logoutAction() {
-    this.userAuthService.logout().then(() => {
-      localStorage.setItem('token', "");
-      this.router.navigateByUrl('/');
-    }).catch(() => {
-      localStorage.setItem('token', "");
-      this.router.navigateByUrl('/');
+  deleteUser(user: User): void {
+    this.userAuthService.deleteUser(user.id).then(() => {
+      this.fetchUsers(); // Refresh the list after deleting user
     });
+  }
+
+  // Implement search functionality and user selection for update
+  searchUser(event: Event) {
+    const target = event.target as HTMLInputElement; // Cast event.target to HTMLInputElement
+    const value = target.value; // Now TypeScript recognizes value property
+    // Your search logic using 'value'
   }
 }
